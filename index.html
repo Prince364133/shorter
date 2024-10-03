@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ai shorter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: linear-gradient(135deg, skyblue, lightyellow);
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: gradientAnimation 10s ease infinite;
+    }
+    @keyframes gradientAnimation {
+      0% { background: linear-gradient(135deg, skyblue, lightyellow); }
+      50% { background: linear-gradient(135deg, lightyellow, skyblue); }
+      100% { background: linear-gradient(135deg, skyblue, lightyellow); }
+    }
+    h1 {
+      text-align: center;
+      color: blue;
+      font-family: 'Cursive', cursive;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    input:focus, select:focus {
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+      outline: none;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    button:active {
+      background-color: #004494;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+    }
+    #summary {
+      display: none;
+      margin-top: 20px;
+    }
+    #summary h2 {
+      color: #333;
+    }
+    #summary p {
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+    .popup button {
+      margin-top: 10px;
+      background-color: #28a745;
+    }
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ai shorter </h1>
+    <p id="formIntro">Please fill out the following details to create your shorter. Your inputs will be summarized and ready to copy.</p>
+    
+    <form id="testForm">
+      <label for="school">School/institute Name:</label>
+      <input type="text" id="school" name="school" required placeholder="optional">
+
+      
+
+      <label for="publisher">Publisher Name:</label>
+      <input type="text" id="publisher" name="publisher" placeholder="e.g., NCERT, OSWAL" required>
+
+      <label for="class">Class:</label>
+      <select id="class" name="class" required>
+        <option value="L.K.G">L.K.G</option>
+        <option value="U.K.G">U.K.G</option>
+         <option value=" 1 ">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+          <option value="4">4</option>
+           <option value="5">5</option>
+        <option value="6">6</option>
+           <option value="7">7</option>
+        <option vlaue="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+          <option value="11">11</option>
+           <option value="12">12</option>
+        <option value="Graduation">Graduation</option>
+           <option value="competition">Competition</option>
+   </select>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" required>
+        
+        <label for="create">create:</label>
+      <select id="create" name="create" required>
+        <option value=" create summary with all important formula,numericals etc. If it is there, then fine; otherwise, it doesn't matter use this given chapter for createing summary ">summary</option>
+        <option value="create bullet points with all important formula,numericals etc. If it is there, then fine; otherwise, it doesn't matter use this given chapter details create in detailed explanation">bullet points</option>
+        <option value="create main points with all important formula,numericals etc. If it is there, then fine; otherwise, it doesn't matter use this given chapter details and make it in detailed explanation in points ">Main points</option>
+          <option value="create all time repeated topics in exam with all important formula,numericals etc with detailed explanation">All time repeated topics</option>
+           <option value="create all time repeated Questions in exam of CBSE ">All time repeated questions</option>
+        <option value="create a 100 marks test paper with 50 question  test paper by analysing previous years Questions in exam of CBSE india ">Create Previous years question</option>
+           <option value="create notes from this given chapter cover all topics with all important formula,numericals , points etc. If it is there, then fine; otherwise, it doesn't matter .use this given  details and don't skip any topics or points of the chapter and make this notes short for revision for exam with important examples ">Create notes</option>
+   </select>
+
+      <label for="testLevel">Use words:</label>
+      <select id="testLevel" name="testLevel" required>
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+          <option value="Exam oriented words">Exam oriented</option>
+      </select>
+
+      <label for="chapter">Chapter number:</label>
+      <input type="number" id="chapter" name="chapter" required placeholder="Don't fill it if making from whole syllabus">
+
+      <label for="chapterName">Chapter Name:</label>
+      <input type="text" id="chapterName" name="chapterName" required placeholder="Don't fill it if making  from whole syllabus" >
+
+      <label for="Entertopic">Enter topic:</label>
+      <input type="text" id="Entertopic" name="Enter topic" required placeholder=" fill only topics Don't fill if making for whole syllabus/chapter." >
+
+      
+      
+        
+      <label for="source">Source:</label>
+       <select id="source" name="source" required>
+        <option value="From all books of any publishers">All other book</option>
+        <option value="From all books of any publishers and also use NCERT"> All Other books + NCERT</option>
+          <option value="FROM NCERT BOOKS">NCERT books</option>
+      </select>
+
+      <label for="difficulty">YEAR'S || only use for making PYQ'S ||</label>
+      <select id="difficulty" name="difficulty" required>
+           <option value=""></option>
+        <option value="1 years previous question papers of CBSE">1 year</option>
+        <option value="2-3 years previous question papers of CBSE">2-3 years</option>
+        <option value="3-5 years previous question papers of CBSE">3-5 years</option>
+          <option value="5-7 years previous question papers of CBSE">5-7 years</option>
+          <option value="7-10 years previous question papers of CBSE">7-10 years</option>
+          <option value="10-15 years previous question papers of CBSE">10-15 years</option>
+      </select>
+    
+    <label for="language">language</label>
+      <select id="language" name="language" required>
+          <option value="make all this content in English">English</option>
+        <option value="make all this content in Hindi">Hindi</option>
+        <option value="make all this content in Sanskrit">Sanskrit</option>
+          <option value="make all this content in Urdu">Urdu</option>
+          <option value="make all this content in Hinglish">Hinglish</option>
+          
+      </select>
+
+      <label for="specificCommand">Describe here if you want any specific type of question or other things in your content:</label>
+      <input type="text" id="specificCommand" name="specificCommand" placeholder="Optional commands">
+
+      <button type="button" id="createTest">Create prompt</button>
+    </form>
+
+    <div id="summary">
+      <h2>inforamtion</h2>
+      <p id="summaryText"></p>
+      <button id="copySummary">Copy to Clipboard</button>
+    </div>
+  </div>
+
+  <div class="popup-overlay" id="popupOverlay"></div>
+  <div class="popup" id="popup">
+    <h2>Prompt Created</h2>
+    <p>Copy summary - back  - click on "2nd step" button - paste summary there then - copy the reply - come back to app and click "3rd step" button - paste text on screen and then download your content.  </p>
+    <button id="popupClose">Close</button>
+  </div>
+<script>
+  document.getElementById('createTest').addEventListener('click', function() {
+    // Gather form data
+    const formData = {
+      school: document.getElementById('school').value,
+      publisher: document.getElementById('publisher').value,
+      class: document.getElementById('class').value,
+      subject: document.getElementById('subject').value,
+      testLevel: document.getElementById('testLevel').value,
+      create: document.getElementById('create').value,
+      chapter: document.getElementById('chapter').value,
+      chapterName: document.getElementById('chapterName').value,
+      Entertopic: document.getElementById('Entertopic').value,
+      language: document.getElementById('language').value,
+      source: document.getElementById('source').value,
+      difficulty: document.getElementById('difficulty').value,
+      specificCommand: document.getElementById('specificCommand').value
+    };
+
+    // Create summary text
+    const summaryText = `School Name: ${formData.school}\nSubject: ${formData.subject}\nlanguage: ${formData.language}\nCreate: ${formData.create}\nClass: ${formData.class}\nChapter number: ${formData.chapter}\nChapter Name: ${formData.chapterName}\nEnter topic: ${formData.Entertopic}\nwords used in content: ${formData.testLevel}\nQuestion from: ${formData.difficulty}\nSource: ${formData.source}\nPublisher: ${formData.publisher}\nSpecific Command: ${formData.specificCommand}\ncreate it in minimum 2000 words but you can use 20,000 words maximum according to need to use and make it in a proper way accordingly by given command and use CBSE format for generating this content from given information consider only filled information`;
+
+    // Copy to clipboard functionality
+    navigator.clipboard.writeText(summaryText).then(() => {
+      alert('Summary copied to clipboard!');
+
+      // Open new ChatGPT window
+      window.open('https://chatgpt.com/', '_blank');
+
+      // Display summary
+      document.getElementById('summaryText').innerText = summaryText;
+      document.getElementById('summary').style.display = 'block';
+
+      // Show popup
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('popupOverlay').style.display = 'block';
+    })
+    .catch(err => {
+      console.error('Failed to copy text: ', err);
+    });
+
+    // Close popup functionality
+    document.getElementById('popupClose').addEventListener('click', function() {
+      document.getElementById('popup').style.display = 'none';
+      document.getElementById('popupOverlay').style.display = 'none';
+    });
+  });
+</script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
