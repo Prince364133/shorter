@@ -119,10 +119,10 @@
 <body>
   <div class="container">
     <h1>Ai shorter </h1>
-    <p id="formIntro">Please fill out the following details to create your shorter. Your inputs will be summarized and ready to copy.</p>
+    <p id="formIntro">Please fill out the following details to create your summary & PYQ'S</p>
     
     <form id="testForm">
-      <label for="school">School/institute Name:</label>
+      <label for="school"> OWNER Name:</label>
       <input type="text" id="school" name="school" required placeholder="optional">
 
       
@@ -155,7 +155,7 @@
         
         <label for="create">create:</label>
       <select id="create" name="create" required>
-        <option value=" create summary with all important formula,numericals etc. If it is there, then fine; otherwise, it doesn't matter use this given chapter for createing summary ">summary</option>
+        <option value=" create summary with all important formula,numericals etc. If it is there, otherwise, it doesn't matter use this given chapter for createing summary ">summary</option>
         <option value="create bullet points with all important formula,numericals etc. If it is there, then fine; otherwise, it doesn't matter use this given chapter details create in detailed explanation">bullet points</option>
         <option value="create main points with all important formula,numericals etc. If it is there, then fine; otherwise, it doesn't matter use this given chapter details and make it in detailed explanation in points ">Main points</option>
           <option value="create all time repeated topics in exam with all important formula,numericals etc with detailed explanation">All time repeated topics</option>
@@ -164,7 +164,7 @@
            <option value="create notes from this given chapter cover all topics with all important formula,numericals , points etc. If it is there, then fine; otherwise, it doesn't matter .use this given  details and don't skip any topics or points of the chapter and make this notes short for revision for exam with important examples ">Create notes</option>
    </select>
 
-      <label for="testLevel">Use words:</label>
+      <label for="testLevel"> words level:</label>
       <select id="testLevel" name="testLevel" required>
         <option value="easy">Easy</option>
         <option value="medium">Medium</option>
@@ -179,7 +179,7 @@
       <input type="text" id="chapterName" name="chapterName" required placeholder="Don't fill it if making  from whole syllabus" >
 
       <label for="Entertopic">Enter topic:</label>
-      <input type="text" id="Entertopic" name="Enter topic" required placeholder=" fill only topics Don't fill if making for whole syllabus/chapter." >
+      <input type="text" id="Entertopic" name="Enter topic" required placeholder=" optional" >
 
       
       
@@ -212,10 +212,10 @@
           
       </select>
 
-      <label for="specificCommand">Describe here if you want any specific type of question or other things in your content:</label>
+      <label for="specificCommand">Describe here if you want any specific type of content </label>
       <input type="text" id="specificCommand" name="specificCommand" placeholder="Optional commands">
 
-      <button type="button" id="createTest">Create prompt</button>
+      <button type="button" id="createTest">Create</button>
     </form>
 
     <div id="summary">
@@ -228,7 +228,7 @@
   <div class="popup-overlay" id="popupOverlay"></div>
   <div class="popup" id="popup">
     <h2>Prompt Created</h2>
-    <p>Copy summary - back  - click on "2nd step" button - paste summary there then - copy the reply - come back to app and click "3rd step" button - paste text on screen and then download your content.  </p>
+    <p>Copy summary - back  - generate PDF </p>
     <button id="popupClose">Close</button>
   </div>
 <script>
@@ -251,7 +251,31 @@
     };
 
     // Create summary text
-    const summaryText = `School Name: ${formData.school}\nSubject: ${formData.subject}\nlanguage: ${formData.language}\nCreate: ${formData.create}\nClass: ${formData.class}\nChapter number: ${formData.chapter}\nChapter Name: ${formData.chapterName}\nEnter topic: ${formData.Entertopic}\nwords used in content: ${formData.testLevel}\nQuestion from: ${formData.difficulty}\nSource: ${formData.source}\nPublisher: ${formData.publisher}\nSpecific Command: ${formData.specificCommand}\ncreate it in minimum 2000 words but you can use 20,000 words maximum according to need to use and make it in a proper way accordingly by given command and use CBSE format for generating this content from given information consider only filled information`;
+   const summaryText = `School Name: ${formData.school}
+Subject: ${formData.subject}
+Language: ${formData.language}
+Content Type: ${formData.create}
+Class: ${formData.class}
+Chapter Number: ${formData.chapter}
+Chapter Name: ${formData.chapterName}
+Topic: ${formData.Entertopic}
+Word Count Range: Minimum 2000 words (up to 20,000 if needed)
+Keywords/Depth Level: ${formData.testLevel}
+Question Focus: ${formData.difficulty}
+Source: ${formData.source}
+Publisher: ${formData.publisher}
+Specific Instruction: ${formData.specificCommand}
+
+Instructions for AI:
+You are a professional CBSE & NCERT content creator. Use the provided data to
+generate the required content in a clean, academic format.
+- Follow CBSE standards for formatting and structure.
+- Focus only on the fields that are filled.
+- Do not include any introductions, explanations, or AI-style comments like 
+'Here is your content' or 'As requested.'
+- Generate the content directly and clearly.
+- Use a formal academic tone.
+- Ensure the output is suitable for direct copy-paste and printing.`;
 
     // Copy to clipboard functionality
     navigator.clipboard.writeText(summaryText).then(() => {
